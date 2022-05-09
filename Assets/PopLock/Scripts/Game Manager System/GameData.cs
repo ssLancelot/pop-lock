@@ -1,4 +1,7 @@
 using UnityEngine;
+using PlayFab;
+using PlayFab.ClientModels;
+using System;
 
 [CreateAssetMenu]
 public class GameData : ScriptableObject
@@ -14,13 +17,17 @@ public class GameData : ScriptableObject
     public int minMotorSpeed = 50;
     public int maxMotorSpeed = 120;
 
+
+    bool Async = false;
+
     public void ResetLevel()
     {
         IsRunning = false;
-        if (PlayerPrefs.GetInt("_curLevel") > 0)
-            CurrentLevel = PlayerPrefs.GetInt("_curLevel");
-        if (PlayerPrefs.GetInt("_star") > 0)
-            Stars = PlayerPrefs.GetInt("_star");
+        // if (PlayerPrefs.GetInt("_curLevel") > 0)
+        //     CurrentLevel = PlayerPrefs.GetInt("_curLevel");
+        // if (PlayerPrefs.GetInt("_star") > 0)
+        //     Stars = PlayerPrefs.GetInt("_star");
+        GetLevel();
         DotsRemaining = CurrentLevel;
     }
 
@@ -48,5 +55,38 @@ public class GameData : ScriptableObject
     {
         if (value > 0)
             currentMotorSpeed = Mathf.Max(currentMotorSpeed - value, minMotorSpeed);
+    }
+
+    public void GetLevel()
+    {
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest(), result =>
+        {
+            if (result.Data == null || result.Data.Count < 1)
+            {
+                SetLevel();
+                Async = true;
+            }
+            else
+            {
+                CurrentLevel = System.Convert.ToInt32(result.Data["Level"].Value);
+                Async = true;
+            }
+
+
+        }, error => { });
+    }
+
+    public void SetLevel()
+    {
+        PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
+        {
+            Data = new System.Collections.Generic.Dictionary<string, string>() { { "Level", CurrentLevel.ToString() } }
+        }, result =>
+            { }, error => { });
+    }
+
+    void GetStars()
+    {
+
     }
 }

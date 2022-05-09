@@ -46,7 +46,7 @@ public class DotDetector : MonoBehaviour
                     {
                         Gamedata.DotsRemaining = 0;
                         Gamedata.CurrentLevel++;
-                        PlayerPrefs.SetInt("_curLevel", Gamedata.CurrentLevel);
+                        Gamedata.SetLevel();
                         OnWinEvent.Raise();
                     }
                     else

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/PopLock/Scenes/Main.unity
+    path: Assets/PopLock/Scenes/00Login.unity
+    guid: 96e303ecc133b1f449c9690dad0575ee
+  - enabled: 1
+    path: Assets/PopLock/Scenes/01Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
