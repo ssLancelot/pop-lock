@@ -4179,6 +4179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf83d73f061e874b9d6db2bec1a6531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: 940399c0afee74c429cc5e9478391f0d, type: 2}
   _username: {fileID: 1970174774}
   _email: {fileID: 1408585329}
   _password: {fileID: 2058412421}
