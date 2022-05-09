@@ -2,6 +2,7 @@ using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 using System;
+using System.Collections;
 
 [CreateAssetMenu]
 public class GameData : ScriptableObject
@@ -87,6 +88,14 @@ public class GameData : ScriptableObject
 
     void GetStars()
     {
+
+    }
+
+    IEnumerator GetLevelandStarts()
+    {
+        GetLevel();
+        yield return new WaitUntil(() => Async);
+
 
     }
 }
