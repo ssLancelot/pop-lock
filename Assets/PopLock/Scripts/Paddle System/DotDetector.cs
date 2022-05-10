@@ -37,7 +37,7 @@ public class DotDetector : MonoBehaviour
                     if (_currentDot.GetComponent<Star>())
                     {
                         Gamedata.Stars++;
-                        PlayerPrefs.SetInt("_star", Gamedata.Stars);
+                        Gamedata.SetStar();
                     }
                     Destroy(_currentDot);
                     Gamedata.DotsRemaining--;
@@ -47,6 +47,7 @@ public class DotDetector : MonoBehaviour
                         Gamedata.DotsRemaining = 0;
                         Gamedata.CurrentLevel++;
                         Gamedata.SetLevel();
+                        Gamedata.SendLeaderboard();
                         OnWinEvent.Raise();
                     }
                     else

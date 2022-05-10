@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
+using UnityEngine.SceneManagement;
 
 public class RegisterBase
 {
@@ -19,11 +20,11 @@ public class RegisterBase
         result =>
         {
             RegisterBase_Async = true;
-            Debug.Log("Kayit Tamamlandi");
         },
         error =>
         {
             RegisterBase_Async = false;
+            SceneManager.LoadScene(0);
             Debug.Log(error.ErrorMessage);
         });
 

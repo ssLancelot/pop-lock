@@ -13,6 +13,6 @@ public class GetDefaultAvatarImage
         //sunucuya kucuk gelmesin diye 250 cektik
         _currentAvatarURL = _currentAvatarURL + _imagesize;
 
-        PlayFabClientAPI.UpdateAvatarUrl(new UpdateAvatarUrlRequest() { ImageUrl = _currentAvatarURL }, result => { Debug.Log("Gorsel Yuklendi"); GetDefaultAvatarImage_Async = true; }, error => { Debug.Log(error.ErrorMessage); GetDefaultAvatarImage_Async = false; });
+        PlayFabClientAPI.UpdateAvatarUrl(new UpdateAvatarUrlRequest() { ImageUrl = _currentAvatarURL }, result => { GetDefaultAvatarImage_Async = true; }, error => { Debug.Log(error.ErrorMessage); GetDefaultAvatarImage_Async = false; });
     }
 }

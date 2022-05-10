@@ -84,7 +84,7 @@ namespace PlayFab.Internal
 #if UNITY_2021_1_OR_NEWER
                 if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
 #else
-                if (request.isNetworkError || request.isHttpError)
+                if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
 #endif
                 {
                     errorCallback(request.error);

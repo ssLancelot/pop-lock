@@ -5,10 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameData Gamedata;
+    [SerializeField] GameObject _asyncPanel;
 
     private void Start()
     {
-        Gamedata.ResetLevel();
+        StartCoroutine(GetClientData());
     }
 
     void Update()
@@ -32,7 +33,16 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        Gamedata.ResetLevel();
+        StartCoroutine(GetClientData());
         Gamedata.FirstTap = true;
+    }
+
+    IEnumerator GetClientData()
+    {
+        Gamedata.ResetLevel();
+        yield return new WaitUntil(() => ClientData.Async);
+        Gamedata.DotsRemaining = Gamedata.CurrentLevel;
+        ClientData.Async = false;
+        _asyncPanel.SetActive(false);
     }
 }

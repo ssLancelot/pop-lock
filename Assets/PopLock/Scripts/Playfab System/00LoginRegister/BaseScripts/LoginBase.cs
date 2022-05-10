@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
+using UnityEngine.SceneManagement;
 
 public class LoginBase
 {
@@ -17,11 +18,11 @@ public class LoginBase
         result =>
         {
             LoginBase_Async = true;
-            Debug.Log("Giriş Başarılı");
         },
         error =>
         {
             LoginBase_Async = false;
+            SceneManager.LoadScene(0);
             Debug.Log(error.ErrorMessage);
         });
 
@@ -34,13 +35,9 @@ public class LoginBase
             CustomId = "Misafir Girisi",
             TitleId = PlayFabSettings.TitleId
         },
-         result =>
-         {
-             Debug.Log("Misafir Girisi Basarili");
-         },
+         result => { },
          error =>
          {
-             Debug.Log(error.ErrorMessage);
          });
     }
 }

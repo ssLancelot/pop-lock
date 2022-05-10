@@ -33,10 +33,10 @@ public class Register : MonoBehaviour
         _aSencPanel.SetActive(true);
         _registerBase.RegisterEmail(_username.text, _email.text, _password.text);
         yield return new WaitUntil(() => _registerBase.RegisterBase_Async);
-        _asncText.text = "Avatar Oluşturuluyor";
+        _asncText.text = "Avatar Setting...";
         _getDefaultAvatarImage.GetDefaultAvatar(_avatarURL, _imagesize);
         yield return new WaitUntil(() => _getDefaultAvatarImage.GetDefaultAvatarImage_Async);
-        _asncText.text = "Giriş Yapılıyor";
+        _asncText.text = "Login...";
         gameData.GetLevel();
         AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(1);
         while (!sceneLoad.isDone)

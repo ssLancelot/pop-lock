@@ -31,7 +31,7 @@ public class Login : MonoBehaviour
     IEnumerator ASencLogin()
     {
         _aSencPanel.SetActive(true);
-        _asncText.text = "Giriş yapılıyor";
+        _asncText.text = "Login...";
         _loginBase.LoginUsername(_username.text, _password.text);
         yield return new WaitUntil(() => _loginBase.LoginBase_Async);
         AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(1);
