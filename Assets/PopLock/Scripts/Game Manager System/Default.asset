@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20011ca43f5f54549b51f37a1fa86661, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
-  CurrentLevel: 3
-  DotsRemaining: 3
-  Stars: 1
+  CurrentLevel: 1
+  DotsRemaining: 1
+  Stars: 0
   FirstTap: 1
   IsRunning: 0
   MinSpawnAngle: 30
